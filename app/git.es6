@@ -1,7 +1,10 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import {exec} from 'child_process';
+import deasync from 'deasync';
+import * as childProcess from 'child_process';
+
+const exec = deasync(childProcess.exec);
 
 
 /**
@@ -25,32 +28,46 @@ export function createUrl(organization, repo) {
 
 
 /**
- * Asynchronously retrieves Git remote origin URL of the repository in
- * current working directory.
+ * Retrieves Git remote origin URL of the repository in current working
+ * directory.
  */
-export function getOrigin(done) {
-  exec('git remote -v', (err, stdout) => {
-    if (err || !stdout) {
-      return done(err, null);
-    }
-    const match = stdout.match(/\S+@\S+/);
-    done(null, match ? match[0] : null);
-  });
+export function getOrigin() {
+  const stdout = exec('git remote -v');
+  if (!stdout) {
+    return null;
+  }
+  const match = stdout.match(/\S+@\S+/);
+  return match ? match[0] : null;
 }
 
 
 /**
- * Asynchronously sets Git remote origin URL to the repository in
- * current working directory.
+ * Sets Git remote origin URL to the repository in current working directory.
  */
-export function setOrigin(url, done) {
-  return exec(`git remote add origin ${url}`, done);
+export function setOrigin(url) {
+  return exec(`git remote add origin ${url}`);
 }
 
 
 /**
- * Asynchronously initializes Git repository in current working directory.
+ * Gets user's e-mail effective for current repository.
  */
-export function init(done) {
-  return exec(`git init`, done);
+export function getEmail() {
+  return exec('git config user.email');
+}
+
+
+/**
+ * Sets given e-mail as user's e-mail for current repository.
+ */
+export function setEmail(email) {
+  return exec(`git config user.email '${email}'`);
+}
+
+
+/**
+ * Initializes Git repository in current working directory.
+ */
+export function init() {
+  return exec('git init');
 }
