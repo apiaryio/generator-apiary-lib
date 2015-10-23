@@ -44,7 +44,7 @@ export function getOrigin(done) {
  * current working directory.
  */
 export function setOrigin(url, done) {
-  return exec(`git remote set-url origin ${url}`, done);
+  return exec(`git remote add origin ${url}`, done);
 }
 
 

@@ -1,10 +1,12 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+
 import {Base} from 'yeoman-generator';
 import {humanize, titleize} from 'underscore.string';
 import {assign, trim} from 'lodash';
 import async from 'async';
+import glob from 'glob';
 
 import * as git from './git';
 
@@ -13,10 +15,10 @@ export default class ApiaryLibGenerator extends Base {
   constructor() {
     super(...arguments);
 
-    this.templatesDir = path.join(__dirname, '..', 'templates');
+    this.templatesDir = path.join(__dirname, 'templates');
     this.templates = fs.readdirSync(this.templatesDir);
 
-    this.info = {};
+    this.data = {};
   }
 
   initializing() {
@@ -85,7 +87,7 @@ export default class ApiaryLibGenerator extends Base {
         default: true,
       },
     ], (answers) => {
-      assign(this.info, answers);
+      assign(this.data, answers);
       done();
     });
   }
@@ -101,7 +103,7 @@ export default class ApiaryLibGenerator extends Base {
       (gitUrl, next) => {
         // If we successfully got the URL, we're done here
         if (gitUrl) {
-          this.info.gitUrl = gitUrl;
+          this.data.gitUrl = gitUrl;
           return done();
         }
         // Otherwise we need to prompt for the remote Git repository URL
@@ -109,8 +111,8 @@ export default class ApiaryLibGenerator extends Base {
       },
       (answers, next) => {
         // We've got the answers, we save them
-        this.info.gitUrl = answers.gitUrl;
-        this.info.gitHub = answers.gitHub;
+        this.data.gitUrl = answers.gitUrl;
+        this.data.gitHub = answers.gitHub;
 
         // We set the origin to the value we've got from user
         this.log(`Setting Git origin to '${answers.gitUrl}'`);
@@ -150,14 +152,30 @@ export default class ApiaryLibGenerator extends Base {
   }
 
   configuring() {
-    if (this.info.openSource) {
-      this.info.license = 'MIT';
-    } else if (!this.info.packageName.match(/^@apiaryio\//)) {
-      this.info.packageName = `@apiaryio/${this.info.packageName}`;
+    // Making some decisions and corrections according to provided
+    // Open Source flag
+    if (this.data.openSource) {
+      this.data.license = 'MIT';
+    } else if (!this.data.packageName.match(/^@apiaryio\//)) {
+      this.data.packageName = `@apiaryio/${this.data.packageName}`;
     }
-    this.sourceRoot(path.join(__dirname, `templates`, this.info.template));
+
+    // Setting source directory to selected template
+    this.sourceRoot(path.join(this.sourceRoot(), this.data.template));
   }
 
   writing() {
+    // We iterate over all files in source folder and treat them as templates.
+    // We provide this.data as the context for the templates. The glob pattern
+    // takes also directories, but this.template() seems to ignore them, so
+    // no special treatment is in place to filter them.
+    const dir = this.sourceRoot();
+    const reDirPrefix = new RegExp(`^${dir}/*`);
+
+    const files = glob.sync(path.join(dir, '**/*'));
+    files.forEach((fullPath) => {
+      const relativePath = fullPath.replace(reDirPrefix, '');
+      this.template(relativePath, this.data);
+    });
   }
 }
