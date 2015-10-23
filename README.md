@@ -36,3 +36,15 @@ the generator. In this new directory you can run:
 ```shell
 $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```
+
+## TODO
+
+- [ ] finish package.json for every template
+- [ ] browser tests for every template
+- [ ] sample mocha test with chai assert for every template
+- [ ] add docker
+- [ ] https://github.com/apiaryio/plutonium/blob/master/.npmrc
+
+- coffee: https://github.com/apiaryio/metamorphoses
+- es6: https://github.com/apiaryio/deckardcain / https://github.com/apiaryio/killswitch
+- es5: https://github.com/apiaryio/plutonium
