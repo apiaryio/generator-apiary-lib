@@ -1,0 +1,13 @@
+# Ignore directory with dependencies
+node_modules
+
+# Do not put anything specific to your editor, computer, or platform here.
+#
+# - For global ignores, such as .DS_Store on Mac, use:
+#
+#   ~/.gitignore_global
+#
+# - For ignores specific to editor or your instance of the project, use:
+#
+#   ./.git/info/exclude
+#

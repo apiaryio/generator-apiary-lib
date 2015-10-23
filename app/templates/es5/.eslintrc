@@ -1,0 +1,5 @@
+// See https://github.com/apiaryio/javascript-style-guide/ and
+// https://github.com/1hella/eslint-config-airbnb-es5
+{
+  "extends": "eslint-config-airbnb-es5"
+}

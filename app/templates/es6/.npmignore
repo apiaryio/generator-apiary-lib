@@ -1,0 +1,6 @@
+node_modules
+
+# When publishing a package, NPM respects .gitignore. However, this package
+# is transpiled, so we need to tell NPM it should not exclude the generated
+# lib directory. For this reason there's .npmignore, specifying just
+# node_modules.

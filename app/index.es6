@@ -1,5 +1,4 @@
 
-import * as fs from 'fs';
 import * as path from 'path';
 
 import {Base} from 'yeoman-generator';
@@ -15,8 +14,10 @@ export default class ApiaryLibGenerator extends Base {
   constructor() {
     super(...arguments);
 
+    // Using glob to avoid dot files
     this.templatesDir = path.join(__dirname, 'templates');
-    this.templates = fs.readdirSync(this.templatesDir);
+    this.templatesPaths = glob.sync(path.join(this.templatesDir, '*'));
+    this.templates = this.templatesPaths.map(path.basename);
 
     this.choices = {
       ci: ['circle.yml', '.travis.yml', 'appveyor.yml'],
@@ -164,6 +165,9 @@ export default class ApiaryLibGenerator extends Base {
   }
 
   configuring() {
+    // Year
+    this.data.year = (new Date()).getFullYear();
+
     if (this.data.openSource) {
       // License for Open Source projects
       this.data.license = 'MIT';
@@ -194,9 +198,14 @@ export default class ApiaryLibGenerator extends Base {
       const relativePath = fullPath.replace(reDirPrefix, '');
 
       // If the file is in CI options, but was not selected by user, then
-      // we want to skip it.
-      if (this.choices.ci.indexOf(relativePath) !== -1 ||
+      // we want to skip it
+      if (this.choices.ci.indexOf(relativePath) !== -1 &&
           this.data.ci.indexOf(relativePath) === -1) {
+        return;
+      }
+
+      // If the file is LICENSE but the library isn't Open Source, skip it
+      if (!this.data.license && relativePath.match(/^LICEN[SC]E/)) {
         return;
       }
 

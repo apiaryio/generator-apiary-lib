@@ -1,0 +1,36 @@
+{
+  "name": "<%= packageName %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "main": "./lib",
+  "scripts": {
+    "lint": "coffeelint src test",
+    "precompile": "npm run lint",
+    "compile": "coffee -b -c -o lib/ src/",
+    "preserver-test": "npm run compile",
+    "prebrowser-test": "npm run compile",
+    "server-test": "mocha --compilers coffee:coffee-script/register -R spec --recursive",
+    "browser-test": "karma start",
+    "test": "npm run server-test && npm run browser-test",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://<%= gitUrl %>"
+  },
+  "author": "<%= company %> <support@apiary.io>",
+  "license": "<% if (locals.license) { %><%= license %><% } else { %>N/A<% } %>",
+  "devDependencies": {
+    "chai": "",
+    "coffee-script": "",
+    "coffeeify": "",
+    "coffeelint": "",
+    "karma": "",
+    "karma-browserify": "",
+    "karma-chai": "",
+    "karma-firefox-launcher": "",
+    "karma-mocha": "",
+    "karma-mocha-reporter": "",
+    "mocha": ""
+  }
+}
