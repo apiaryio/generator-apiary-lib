@@ -1,13 +1,14 @@
-# Apiary Library Template
+# Apiary Library Generator
 
-Library Template allows you to start a new library in couple of minutes, with
-all initial setup as required or recommended.
+Apiary's Yeoman generator for basic project scaffolding. Allows you to start
+a new library in couple of minutes, with all initial setup as required or
+recommended by internal directions.
 
 ## Installation
 
 ```
 $ npm install yo -g  # make sure Yeoman is installed
-$ npm install apiary-lib-template -g
+$ npm install generator-apiary-lib -g
 ```
 
 ## Usage
@@ -20,7 +21,7 @@ $ apiary-lib  # runs the generator
 
 As the generator is written in ES6 and transpiled by Babel, it's not that
 simple. Clone the repository and in the project directory (e.g.
-`~/<your folder with projects>/lib-template`) do following:
+`~/<your folder with projects>/generator-apiary-lib`) do following:
 
 ```shell
 $ npm install yo -g  # make sure Yeoman is installed
@@ -33,5 +34,5 @@ Then create yourself a separate, empty directory (e.g.
 the generator. In this new directory you can run:
 
 ```
-$ (cd '~/<your folder with projects>/lib-template' && npm run compile) && apiary-lib
+$ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```

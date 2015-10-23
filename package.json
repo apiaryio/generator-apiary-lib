@@ -1,7 +1,7 @@
 {
-  "name": "generator-apiary-lib-template",
+  "name": "generator-apiary-lib",
   "version": "0.0.1",
-  "description": "Apiary Library Template",
+  "description": "Apiary Library Generator",
   "bin": {
     "apiary-lib": "./apiary-lib.sh"
   },
