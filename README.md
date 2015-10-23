@@ -44,6 +44,10 @@ $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) &
 - [ ] sample mocha test with chai assert for every template
 - [ ] add docker
 - [ ] https://github.com/apiaryio/plutonium/blob/master/.npmrc
+- [ ] make stub of README for every template (installation etc. is the same)
+- [ ] finish *this* README (also add animated gif with progress of the form)
+
+### Inspiration
 
 - coffee: https://github.com/apiaryio/metamorphoses
 - es6: https://github.com/apiaryio/deckardcain / https://github.com/apiaryio/killswitch
