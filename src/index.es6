@@ -1,7 +1,9 @@
 
-// import * as fs from 'fs';
+import * as fs from 'fs';
 import * as path from 'path';
 import {Base} from 'yeoman-generator';
+import {humanize, titleize} from 'underscore.string';
+import {assign, trim} from 'lodash';
 import async from 'async';
 
 import * as git from './git';
@@ -11,8 +13,9 @@ export default class ApiaryLibGenerator extends Base {
   constructor() {
     super(...arguments);
 
-    // this.templatesDir = path.join(__dirname, '..', 'templates');
-    // this.templates = fs.readdirSync(this.templatesDir);
+    this.templatesDir = path.join(__dirname, '..', 'templates');
+    this.templates = fs.readdirSync(this.templatesDir);
+
     this.info = {};
   }
 
@@ -29,6 +32,65 @@ export default class ApiaryLibGenerator extends Base {
   }
 
   prompting() {
+    const done = this.async();
+
+    this.log(`
+      Before filling the form, read internal directions at
+      https://docs.apiary-internal.com/content/projects.html
+    `);
+    this.prompt([
+      {
+        name: 'name',
+        message: 'Human-readable project name',
+        default: titleize(humanize(path.basename(process.cwd()))),
+      },
+      {
+        name: 'packageName',
+        message: 'Package name',
+        default: path.basename(process.cwd()),
+      },
+      {
+        name: 'description',
+        message: 'Human-readable description in one sentence',
+        validate: (input) => {
+          if (!trim(input)) {
+            return 'Description is required.';
+          }
+          return true;
+        },
+      },
+      {
+        type: 'list',
+        name: 'template',
+        message: 'Template type',
+        default: 'es6',
+        choices: this.templates,
+      },
+      {
+        type: 'list',
+        name: 'company',
+        message: 'Company you work for',
+        default: () => {
+          if (new Date().getTimezoneOffset() > 2) {
+            return 'Apiary Inc.';
+          }
+          return 'Apiary Czech Republic, s.r.o.';
+        },
+        choices: ['Apiary Inc.', 'Apiary Czech Republic, s.r.o.'],
+      },
+      {
+        type: 'confirm',
+        name: 'openSource',
+        message: 'Open Source',
+        default: true,
+      },
+    ], (answers) => {
+      assign(this.info, answers);
+      done();
+    });
+  }
+
+  promptingGit() {
     const done = this.async();
 
     async.waterfall([
@@ -87,26 +149,15 @@ export default class ApiaryLibGenerator extends Base {
     });
   }
 
-  promptingX() {
-    this.log(this.info);
+  configuring() {
+    if (this.info.openSource) {
+      this.info.license = 'MIT';
+    } else if (!this.info.packageName.match(/^@apiaryio\//)) {
+      this.info.packageName = `@apiaryio/${this.info.packageName}`;
+    }
+    this.sourceRoot(path.join(__dirname, `templates`, this.info.template));
+  }
+
+  writing() {
   }
 }
-
-
-// _promptForProjectName(done) {
-//   this.prompt([
-//     {
-//       name: 'packageName',
-//       message: 'Package name',
-//       default: path.basename(process.cwd()),
-//     },
-//   ], done);
-// }
-
-// //   // {
-// //   //   type    : 'list',
-// //   //   name    : 'template',
-// //   //   message : 'Template',
-// //   //   default : 'es6',
-// //   //   choices : this.templates,
-// //   // },
