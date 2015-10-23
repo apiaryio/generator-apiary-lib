@@ -6,14 +6,14 @@ recommended by internal directions.
 
 ## Installation
 
-```
+```shell
 $ npm install yo -g  # make sure Yeoman is installed
 $ npm install generator-apiary-lib -g
 ```
 
 ## Usage
 
-```
+```shell
 $ apiary-lib  # runs the generator
 ```
 
@@ -33,6 +33,6 @@ Then create yourself a separate, empty directory (e.g.
 `~/<your folder with projects>/playground`) where you want to play with
 the generator. In this new directory you can run:
 
-```
+```shell
 $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```
