@@ -66,7 +66,11 @@ export function setOrigin(url, execFn = null) {
  */
 export function getEmail(execFn = null) {
   const exec = execFn || execSync;
-  return exec('git config user.email');
+  try {
+    return exec('git config user.email');
+  } catch (err) {
+    return null;
+  }
 }
 
 
