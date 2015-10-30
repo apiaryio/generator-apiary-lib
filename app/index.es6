@@ -79,7 +79,7 @@ export default class ApiaryLibGenerator extends Base {
         name: 'email',
         message: 'Your company e-mail or username (shenzi@apiary.io or shenzi)',
         default: () => {
-          const email = git.getEmail();
+          const email = git.getEmail() || '';
           if (email.match(/@apiary\.io$/)) {
             return email;
           }
