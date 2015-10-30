@@ -4,15 +4,16 @@ import * as path from 'path';
 import deasync from 'deasync';
 import * as childProcess from 'child_process';
 
-const exec = deasync(childProcess.exec);
+const execSync = deasync(childProcess.exec); // exported for tests
 
 
 /**
  * Checks whether Git repository exists in the current working directory.
  */
-export function exists() {
+export function exists(cwd = null, statFn = null) {
+  const stat = statFn || fs.statSync;
   try {
-    return !!fs.statSync(path.join(process.cwd(), '.git'));
+    return !!stat(path.join(cwd || process.cwd(), '.git'));
   } catch (err) {
     return false;
   }
@@ -40,20 +41,22 @@ export function parseUrl(url) {
  * Retrieves Git remote origin URL of the repository in current working
  * directory.
  */
-export function getOrigin() {
+export function getOrigin(execFn = null) {
+  const exec = execFn || execSync;
   const stdout = exec('git remote -v');
   if (!stdout) {
     return null;
   }
-  const match = stdout.match(/\S+@\S+/);
-  return match ? match[0] : null;
+  const match = stdout.match(/origin\s+(\S+@\S+)/);
+  return match ? match[1] : null;
 }
 
 
 /**
  * Sets Git remote origin URL to the repository in current working directory.
  */
-export function setOrigin(url) {
+export function setOrigin(url, execFn = null) {
+  const exec = execFn || execSync;
   return exec(`git remote add origin ${url}`);
 }
 
@@ -61,7 +64,8 @@ export function setOrigin(url) {
 /**
  * Gets user's e-mail effective for current repository.
  */
-export function getEmail() {
+export function getEmail(execFn = null) {
+  const exec = execFn || execSync;
   return exec('git config user.email');
 }
 
@@ -69,7 +73,8 @@ export function getEmail() {
 /**
  * Sets given e-mail as user's e-mail for current repository.
  */
-export function setEmail(email) {
+export function setEmail(email, execFn = null) {
+  const exec = execFn || execSync;
   return exec(`git config user.email '${email}'`);
 }
 
@@ -77,6 +82,7 @@ export function setEmail(email) {
 /**
  * Initializes Git repository in current working directory.
  */
-export function init() {
+export function init(execFn = null) {
+  const exec = execFn || execSync;
   return exec('git init');
 }
