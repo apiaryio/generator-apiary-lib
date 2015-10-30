@@ -5,15 +5,10 @@
   "description": "<%= description %>",
   "main": "./lib",
   "scripts": {
-    "lint": "coffeelint",
-    "precompile": "npm run lint",
-    "compile": "coffee -b -c -o lib src",
-    "preserver-test": "npm run compile",
-    "prebrowser-test": "npm run compile",
-    "server-test": "mocha --compilers coffee:coffee-script/register -R spec --recursive",
+    "lint": "eslint --ext .js",
+    "server-test": "mocha -R spec --recursive",
     "browser-test": "karma start",
-    "test": "npm run server-test && npm run browser-test",
-    "prepublish": "npm run compile"
+    "test": "npm run server-test && npm run browser-test"
   },
   "repository": {
     "type": "git",
@@ -23,9 +18,6 @@
   "license": "<% if (locals.license) { %><%= license %><% } else { %>N/A<% } %>",
   "devDependencies": {
     "chai": "",
-    "coffee-script": "",
-    "coffeeify": "",
-    "coffeelint": "",
     "karma": "",
     "karma-browserify": "",
     "karma-chai": "",

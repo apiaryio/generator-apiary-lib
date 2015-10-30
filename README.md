@@ -39,7 +39,6 @@ $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) &
 
 ## TODO
 
-- [ ] finish package.json for every template
 - [ ] browser tests for every template
 - [ ] sample mocha test with chai assert for every template
 - [ ] add docker
