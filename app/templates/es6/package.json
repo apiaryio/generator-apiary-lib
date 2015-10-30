@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.es6",
     "precompile": "npm run lint",
-    "compile": "babel src --out-dir lib",
+    "compile": "babel src/ --out-dir lib/",
     "preserver-test": "npm run compile",
     "prebrowser-test": "npm run compile",
     "server-test": "mocha --compilers es6:babel/register -R spec --recursive",
