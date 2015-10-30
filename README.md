@@ -63,7 +63,8 @@ $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) &
 
 ## TODO
 
-- [ ] [add generator tests](http://yeoman.io/authoring/testing.html)
+- [ ] [add more generator tests](http://yeoman.io/authoring/testing.html)
+- [ ] add integration tests which will try to generate from template and run tests
 - [ ] add Docker
 - [ ] [make templates more DRY](https://github.com/tj/ejs#includes)
 
