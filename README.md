@@ -4,6 +4,25 @@ Apiary's Yeoman generator for basic project scaffolding. Allows you to start
 a new library in couple of minutes, with all initial setup as required or
 recommended by internal directions.
 
+![Demo](https://github.com/apiaryio/generator-apiary-lib/blob/master/assets/demo.gif?raw=true)
+
+## Templates
+
+- `coffee` for CoffeeScript
+- `es5` for JavaScript
+- `es6` for ECMAScript2015
+
+### Adding a new template
+
+The generator was made with the idea of having templates available also for
+languages not based on JavaScript, but the initial version doesn't feature any.
+If you want to contribute a template for Ruby, Python, or other language, feel
+free to do so, but you might need to perform some changes also to the generator
+itself, as there is probably some code, which is JavaScript-specific and not
+general enough. This is a known limitation and an unfortunate burden put on
+the first contributors, but thanks to it the generator could become real very
+quickly.
+
 ## Installation
 
 ```shell
@@ -37,15 +56,9 @@ the generator. In this new directory you can run:
 $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```
 
-## TODO
+## TODO & ideas
 
-- [ ] make stub of README for every template (installation etc. is the same)
 - [ ] finish *this* README (also add animated gif with progress of the form)
-- [ ] add tests http://yeoman.io/authoring/testing.html
-- [ ] add docker
-
-### Inspiration
-
-- coffee: https://github.com/apiaryio/metamorphoses
-- es6: https://github.com/apiaryio/deckardcain / https://github.com/apiaryio/killswitch
-- es5: https://github.com/apiaryio/plutonium
+- [ ] [add generator tests](http://yeoman.io/authoring/testing.html)
+- [ ] add Docker
+- [ ] [make templates more DRY](https://github.com/tj/ejs#includes)
