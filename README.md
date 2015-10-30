@@ -38,9 +38,10 @@ $ apiary-lib  # runs the generator
 
 ## Development
 
-As the generator is written in ES6 and transpiled by Babel, it's not so
-simple. Clone the repository and in the project directory (e.g.
-`~/<your folder with projects>/generator-apiary-lib`) do following:
+As the generator is written in ES6 and transpiled by Babel, seamless
+development of it is not so simple. Clone the repository and in the
+project directory (e.g. `~/<your folder with projects>/generator-apiary-lib`)
+do following:
 
 ```shell
 $ npm install yo -g  # make sure Yeoman is installed
