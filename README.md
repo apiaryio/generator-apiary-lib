@@ -4,6 +4,10 @@ Apiary's Yeoman generator for basic project scaffolding. Allows you to start
 a new library in couple of minutes, with all initial setup as required or
 recommended by internal directions.
 
+[![CircleCI Build Status](https://circleci.com/gh/apiaryio/generator-apiary-lib.svg?style=shield)](https://circleci.com/gh/apiaryio/generator-apiary-lib)
+
+## Demo
+
 ![Demo](https://github.com/apiaryio/generator-apiary-lib/blob/master/assets/demo.gif?raw=true)
 
 ## Templates

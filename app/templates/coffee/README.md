@@ -3,11 +3,11 @@
 <%= description %>
 
 <% if (ci.indexOf('circle.yml') !== -1) { %>
-[![CircleCI](https://circleci.com/gh/<%= gitHub.handle %>.svg?style=shield)](https://circleci.com/gh/<%= gitHub.handle %>)
+[![CircleCI Build Status](https://circleci.com/gh/<%= gitHub.handle %>.svg?style=shield)](https://circleci.com/gh/<%= gitHub.handle %>)
 <% } %><% if (ci.indexOf('.travis.yml') !== -1) { %>
-[![Build Status](https://travis-ci.org/<%= gitHub.handle %>.svg?branch=master)](https://travis-ci.org/<%= gitHub.handle %>)
+[![TravisCI Build Status](https://travis-ci.org/<%= gitHub.handle %>.svg?branch=master)](https://travis-ci.org/<%= gitHub.handle %>)
 <% } %><% if (ci.indexOf('appveyor.yml') !== -1) { %>
-[![Build status](https://ci.appveyor.com/api/projects/status/.../branch/master?svg=true)](https://ci.appveyor.com/project/Apiary/<%= packageName %>/branch/master)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/.../branch/master?svg=true)](https://ci.appveyor.com/project/Apiary/<%= packageName %>/branch/master)
 <% } %>
 
 ## Usage
