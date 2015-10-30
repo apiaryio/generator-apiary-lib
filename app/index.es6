@@ -124,6 +124,7 @@ export default class ApiaryLibGenerator extends Base {
     if (gitUrl) {
       this.data.gitOriginMissing = false;
       this.data.gitUrl = gitUrl;
+      this.data.gitHub = git.parseUrl(gitUrl);
       return done();
     }
 
@@ -149,6 +150,8 @@ export default class ApiaryLibGenerator extends Base {
         default: path.basename(process.cwd()),
       },
     ], (gitHub) => {
+      gitHub.handle = [gitHub.organization, gitHub.repo].join('/');
+
       // Once we have GitHub details, we can construct the remote Git repo URL
       // ourselves, but just to be sure, let's have it confirmed from the user
       this.prompt([

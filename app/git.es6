@@ -28,6 +28,15 @@ export function createUrl(organization, repo) {
 
 
 /**
+ * Parses GitHub URL to object with details.
+ */
+export function parseUrl(url) {
+  const match = url.match(/(\w+)\/(\w+)/);
+  return {organization: match[1], repo: match[2], handle: match[0]};
+}
+
+
+/**
  * Retrieves Git remote origin URL of the repository in current working
  * directory.
  */
