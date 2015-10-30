@@ -57,8 +57,13 @@ the generator. In this new directory you can run:
 $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```
 
-## TODO & ideas
+## TODO
 
 - [ ] [add generator tests](http://yeoman.io/authoring/testing.html)
 - [ ] add Docker
 - [ ] [make templates more DRY](https://github.com/tj/ejs#includes)
+
+## Ideas
+
+- Automatically append several selected [global ignores](https://github.com/github/gitignore/blob/master/Global/) to `./.git/info/exclude`.
+- As the last thing, open README.md in user's editor (using the `EDITOR` environment variable).

@@ -226,23 +226,5 @@ export default class ApiaryLibGenerator extends Base {
       git.setOrigin(this.data.gitUrl);
     }
     git.setEmail(this.data.email);
-
-    // Git ignore
-    // Put
-    //
-    // - https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
-    // - https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore
-    //
-    // to
-    //
-    // - ./.git/info/exclude
-
-    // README
-    // opening README in your editor, EDITOR env var
   }
 }
