@@ -58,7 +58,6 @@ $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) &
 
 ## TODO & ideas
 
-- [ ] finish *this* README (also add animated gif with progress of the form)
 - [ ] [add generator tests](http://yeoman.io/authoring/testing.html)
 - [ ] add Docker
 - [ ] [make templates more DRY](https://github.com/tj/ejs#includes)
