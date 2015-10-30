@@ -13,7 +13,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*.coffee'
+      'test/**/*.es6'
     ],
 
 
@@ -25,12 +25,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*.coffee': ['browserify']
+	  'test/**/*.es6': ['browserify']
     },
 
-    browserify: {
-      transform: ['coffeeify'],
-      extensions: ['.coffee']
+   browserify: {
+      configure: function(bundle) {
+        bundle.once('prebundle', function() {
+          bundle.transform('babelify');
+        });
+      }
     },
 
     // test results reporter to use
@@ -64,5 +67,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: !!process.env.CI
-  });
-};
+  })
+}
