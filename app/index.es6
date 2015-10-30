@@ -204,8 +204,13 @@ export default class ApiaryLibGenerator extends Base {
         return;
       }
 
-      // If the file is LICENSE but the library isn't Open Source, skip it
+      // If the file is LICENSE, but the library isn't Open Source, skip it
       if (!this.data.license && relativePath.match(/^LICEN[SC]E/)) {
+        return;
+      }
+
+      // If the file is .npmrc, but the library isn't Open Source, skip it
+      if (!this.data.openSource && relativePath === '.npmrc') {
         return;
       }
 

@@ -39,7 +39,6 @@ $ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) &
 
 ## TODO
 
-- [ ] https://github.com/apiaryio/plutonium/blob/master/.npmrc
 - [ ] make stub of README for every template (installation etc. is the same)
 - [ ] finish *this* README (also add animated gif with progress of the form)
 - [ ] add tests http://yeoman.io/authoring/testing.html
