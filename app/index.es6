@@ -17,7 +17,9 @@ export default class ApiaryLibGenerator extends Base {
     // Using glob to avoid dot files
     this.templatesDir = path.join(__dirname, 'templates');
     this.templatesPaths = glob.sync(path.join(this.templatesDir, '*'));
-    this.templates = this.templatesPaths.map(path.basename);
+    this.templates = this.templatesPaths.map(function(item) {
+      return path.basename(item);
+    });
 
     this.choices = {
       ci: ['circle.yml', '.travis.yml', 'appveyor.yml'],
