@@ -36,15 +36,26 @@ $ npm install generator-apiary-lib -g
 
 ## Usage
 
+Use the generator **in the root of your project**. If you want to start a new
+project, create yourself a new project directory. The generator doesn't have
+to be ran in an empty directory, though.
+
 ```shell
+$ mkdir ~/<your directory with projects>/<project directory>
+$ cd ~/<your directory with projects>/<project directory>
 $ apiary-lib  # runs the generator
 ```
+
+You shouldn't need to worry about existing `.git` directory or other files.
+The generator will ask you should it ever need to overwrite an existing file.
+Also, Git helps in case something gets overwritten. This way you should be able
+to use the template also on existing projects, not only on new ones.
 
 ## Development
 
 As the generator is written in ES6 and transpiled by Babel, seamless
 development of it is not so simple. Clone the repository and in the
-project directory (e.g. `~/<your folder with projects>/generator-apiary-lib`)
+project directory (e.g. `~/<your directory with projects>/generator-apiary-lib`)
 do following:
 
 ```shell
@@ -54,11 +65,11 @@ $ npm link  # make the local version accessible to the global Yeoman generator
 ```
 
 Then create yourself a separate, empty directory (e.g.
-`~/<your folder with projects>/playground`) where you want to play with
+`~/<your directory with projects>/playground`) where you want to play with
 the generator. In this new directory you can run:
 
 ```shell
-$ (cd '~/<your folder with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
+$ (cd '~/<your directory with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
 ```
 
 ## TODO
