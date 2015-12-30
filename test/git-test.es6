@@ -1,7 +1,7 @@
 
 import {assert} from 'chai';
 
-import * as git from '../app/git';
+import * as git from '../src/git';
 
 
 describe('Git Helpers', () => {
