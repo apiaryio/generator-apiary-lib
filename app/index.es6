@@ -9,7 +9,7 @@ import glob from 'glob';
 import * as git from './git';
 
 
-export default class ApiaryLibGenerator extends Base {
+class ApiaryLibGenerator extends Base {
 
   constructor() {
     super(...arguments);
@@ -230,3 +230,7 @@ export default class ApiaryLibGenerator extends Base {
     git.setEmail(this.data.email);
   }
 }
+
+
+// This has no equivalent in ES2015 and it is needed for Yeoman to work
+module.exports = ApiaryLibGenerator;
