@@ -69,5 +69,5 @@ Then create yourself a separate, empty directory (e.g.
 the generator. In this new directory you can run:
 
 ```shell
-$ (cd '~/<your directory with projects>/generator-apiary-lib' && npm run compile) && apiary-lib
+$ (cd ~/<your directory with projects>/generator-apiary-lib && npm run compile) && apiary-lib
 ```
