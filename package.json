@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint app/ --ext .es6",
     "precompile": "npm run lint",
-    "compile": "babel app/ -x .es6 --out-dir app/",
+    "compile": "babel app/*.es6 -x .es6 --out-dir app/",
     "pretest": "npm run compile",
     "test": "mocha --compilers es6:babel-core/register -R spec --recursive",
     "prepublish": "npm run compile",
