@@ -6,7 +6,7 @@
     "apiary-lib": "./apiary-lib.sh"
   },
   "scripts": {
-    "lint": "echo 1 || eslint app/ --ext .es6",
+    "lint": "eslint app/ --ext .es6",
     "precompile": "npm run lint",
     "compile": "babel app/ -x .es6 --out-dir app/",
     "pretest": "npm run compile",
