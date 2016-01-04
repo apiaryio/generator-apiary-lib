@@ -6,11 +6,11 @@
     "apiary-lib": "./apiary-lib.sh"
   },
   "scripts": {
-    "lint": "eslint src/ test/ --ext .es6",
+    "lint": "eslint src/ test/",
     "precompile": "npm run lint",
-    "compile": "babel src/ -x .es6 --out-dir app/",
+    "compile": "babel src/ --out-dir app/",
     "pretest": "npm run compile",
-    "test": "mocha --compilers es6:babel-core/register -R spec --recursive",
+    "test": "mocha --require babel-core/register -R spec --recursive",
     "prepublish": "npm run compile",
     "update-coffeelint": "curl 'https://raw.githubusercontent.com/apiaryio/coffeescript-style-guide/master/coffeelint.json' > app/templates/coffee/coffeelint.json"
   },

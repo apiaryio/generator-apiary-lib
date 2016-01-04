@@ -5,12 +5,12 @@
   "description": "<%= description %>",
   "main": "./lib",
   "scripts": {
-    "lint": "eslint --ext .js,.es6",
+    "lint": "eslint",
     "precompile": "npm run lint",
     "compile": "babel src/ --out-dir lib/",
     "preserver-test": "npm run compile",
     "prebrowser-test": "npm run compile",
-    "server-test": "mocha --compilers es6:babel-core/register -R spec --recursive",
+    "server-test": "mocha --require babel-core/register -R spec --recursive",
     "browser-test": "karma start",
     "test": "npm run server-test && npm run browser-test",
     "prepublish": "npm run compile"
