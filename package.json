@@ -9,7 +9,6 @@
     "lint": "eslint src/ test/",
     "precompile": "npm run lint",
     "compile": "babel src/ --out-dir app/",
-    "pretest": "npm run compile",
     "test": "mocha --require babel-core/register -R spec --recursive",
     "prepublish": "npm run compile",
     "update-coffeelint": "curl 'https://raw.githubusercontent.com/apiaryio/coffeescript-style-guide/master/coffeelint.json' > app/templates/coffee/coffeelint.json"

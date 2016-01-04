@@ -5,7 +5,7 @@ import {assert} from 'chai';
 import * as yeoman from 'yeoman-generator';
 
 
-const generatorPath = path.join(__dirname, '../app');
+const generatorPath = path.join(__dirname, '../src');
 
 
 function feed(input, done) {

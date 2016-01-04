@@ -187,7 +187,8 @@ class ApiaryLibGenerator extends Base {
     }
 
     // Setting source directory to selected template
-    this.sourceRoot(path.join(this.sourceRoot(), this.data.template));
+    const rootPath = path.normalize(path.join(__dirname, '..'));
+    this.sourceRoot(path.join(rootPath, 'app', 'templates', this.data.template));
   }
 
   writing() {
