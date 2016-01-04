@@ -8,8 +8,6 @@
     "lint": "coffeelint",
     "precompile": "npm run lint",
     "compile": "coffee -b -c -o lib/ src/",
-    "preserver-test": "npm run compile",
-    "prebrowser-test": "npm run compile",
     "server-test": "mocha --compilers coffee:coffee-script/register -R spec --recursive",
     "browser-test": "karma start",
     "test": "npm run server-test && npm run browser-test",

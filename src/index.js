@@ -67,7 +67,7 @@ class ApiaryLibGenerator extends Base {
         type: 'list',
         name: 'template',
         message: 'Template type',
-        default: 'es6',
+        default: 'es2015',
         choices: this.templates,
       },
       {
@@ -187,7 +187,8 @@ class ApiaryLibGenerator extends Base {
     }
 
     // Setting source directory to selected template
-    this.sourceRoot(path.join(this.sourceRoot(), this.data.template));
+    const rootPath = path.normalize(path.join(__dirname, '..'));
+    this.sourceRoot(path.join(rootPath, 'app', 'templates', this.data.template));
   }
 
   writing() {

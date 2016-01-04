@@ -1,7 +1,7 @@
 
 import assert from 'chai';
 
-import add from '../lib/index';
+import add from '../src/index';
 
 
 describe('#add', () => {
