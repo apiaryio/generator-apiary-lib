@@ -1,7 +1,7 @@
 
 {assert} = require('chai')
 
-{add} = require('../lib/index')
+{add} = require('../src/index')
 
 
 describe('#add', ->
