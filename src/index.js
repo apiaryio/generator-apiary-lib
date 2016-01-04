@@ -67,7 +67,7 @@ class ApiaryLibGenerator extends Base {
         type: 'list',
         name: 'template',
         message: 'Template type',
-        default: 'es6',
+        default: 'es2015',
         choices: this.templates,
       },
       {
