@@ -17,7 +17,7 @@ class ApiaryLibGenerator extends Base {
     // Using glob to avoid dot files
     this.templatesDir = path.join(__dirname, 'templates');
     this.templatesPaths = glob.sync(path.join(this.templatesDir, '*'));
-    this.templates = this.templatesPaths.map(function(item) {
+    this.templates = this.templatesPaths.map((item) => {
       return path.basename(item);
     });
 
