@@ -1,10 +1,16 @@
-# Apiary Library Generator
+# Deprecated Apiary Library Generator
 
 Apiary's Yeoman generator for basic project scaffolding. Allows you to start
 a new library in couple of minutes, with all initial setup as required or
 recommended by internal directions.
 
 [![CircleCI Build Status](https://circleci.com/gh/apiaryio/generator-apiary-lib.svg?style=shield)](https://circleci.com/gh/apiaryio/generator-apiary-lib)
+
+## Deprecation notice
+
+**Unfortunately, this project is no longer used in Apiary and won't be developed
+anymore. Feel free to fork it or get inspired by it, but do not expect any
+further support and development.**
 
 ## Demo
 
