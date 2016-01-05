@@ -20,7 +20,7 @@ further support and development.**
 
 - `coffee` for CoffeeScript
 - `es5` for JavaScript
-- `es6` for ECMAScript2015
+- `es2015` for ECMAScript2015
 
 ### Adding a new template
 
